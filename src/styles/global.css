@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+/* Brand variables */
+:root {
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --ink: #0b1516;
+    --muted: #4b5b5c;
+
+    --brand: #0e7c7b;
+    /* teal */
+    --brand2: #c9a227;
+    /* gold */
+}
+
+/* Base */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Manrope", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+.font-display {
+    font-family: "Fraunces", ui-serif, Georgia, serif;
+}
+
+::selection {
+    background: rgba(201, 162, 39, .25);
+}

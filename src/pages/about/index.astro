@@ -5,9 +5,69 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 <BaseLayout title="About — 7WW7">
   <section class="py-12">
     <h1 class="font-display text-4xl">About 7WW7</h1>
-    <p class="mt-4 text-[var(--muted)] max-w-2xl">
-      Overview page (we’ll expand with governance, cadence, and dashboard model
-      next).
+    <p class="mt-4 max-w-3xl text-lg text-[var(--muted)]">
+      7WW7 is designed as a neutral coordination architecture: seven continental
+      foundations aligned through shared metrics, shared cadence, and shared
+      trust-building infrastructure.
     </p>
+
+    <div class="mt-10 grid gap-4 md:grid-cols-3">
+      {
+        [
+          [
+            "Cadence",
+            "Weekly → monthly → annual rhythm for sustained cooperation.",
+          ],
+          [
+            "Metrics",
+            "A public-facing dashboard concept to measure equilibrium outcomes.",
+          ],
+          [
+            "Playgrounds",
+            "Experiential hubs where diplomacy, culture, and innovation meet.",
+          ],
+        ].map(([t, d]) => (
+          <div class="rounded-3xl border border-black/5 bg-white p-6 shadow-sm">
+            <div class="text-xs font-semibold text-[var(--brand)]">{t}</div>
+            <div class="mt-2 text-sm text-[var(--muted)]">{d}</div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-10 rounded-3xl border border-black/5 bg-white p-8 shadow-sm">
+      <h2 class="font-display text-2xl">How it works</h2>
+      <ol class="mt-4 space-y-3 text-[var(--muted)]">
+        <li>
+          <span class="font-semibold text-[var(--ink)]">1) Convene:</span> high-trust
+          dialogue across stakeholders.
+        </li>
+        <li>
+          <span class="font-semibold text-[var(--ink)]">2) Design:</span> translate
+          priorities into programs and pilots.
+        </li>
+        <li>
+          <span class="font-semibold text-[var(--ink)]">3) Measure:</span> publish
+          indicators, learn, and improve.
+        </li>
+        <li>
+          <span class="font-semibold text-[var(--ink)]">4) Scale:</span> replicate
+          across continents with partners.
+        </li>
+      </ol>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="/work"
+          class="rounded-full bg-[var(--ink)] px-5 py-3 text-sm font-semibold text-white hover:opacity-90 transition"
+          >Explore our work</a
+        >
+        <a
+          href="/contact"
+          class="rounded-full border border-black/10 bg-white px-5 py-3 text-sm font-semibold hover:bg-black/[0.03] transition"
+          >Contact</a
+        >
+      </div>
+    </div>
   </section>
 </BaseLayout>

@@ -12,19 +12,71 @@ const nav = [
 >
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
-      <a href="/" class="flex items-center gap-2">
+      <!-- Brand -->
+      <!-- Brand / temporary seal logo -->
+      <a href="/" class="flex items-center gap-3">
         <span
-          class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-[var(--brand)] text-white text-sm font-semibold"
-          >7</span
+          class="relative inline-flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-full
+         border-2 border-[rgba(201,162,39,.70)]
+         shadow-sm"
+          aria-hidden="true"
         >
-        <span class="font-semibold tracking-tight">7WW7</span>
+          <!-- Shiny “metal + enamel” background -->
+          <span
+            class="absolute inset-0 rounded-full
+           bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,.95),rgba(201,162,39,.22)_22%,rgba(14,124,123,.18)_55%,rgba(255,255,255,.70)_100%)]"
+          ></span>
+
+          <!-- Soft vignette for depth -->
+          <span
+            class="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,.18)_100%)]"
+          ></span>
+
+          <!-- Inner ring -->
+          <span
+            class="pointer-events-none absolute inset-[3px] rounded-full border border-white/55"
+          ></span>
+          <span
+            class="pointer-events-none absolute inset-[5px] rounded-full border border-black/10"
+          ></span>
+
+          <!-- Specular highlight “shine” -->
+          <span
+            class="pointer-events-none absolute -top-3 -left-3 h-10 w-10 rounded-full
+           bg-white/35 blur-md"
+          ></span>
+
+          <!-- Monogram -->
+          <span class="relative grid leading-none text-center">
+            <span
+              class="font-display text-[10px] md:text-[11px] font-semibold tracking-[0.18em] text-[var(--ink)]"
+            >
+              7W
+            </span>
+            <span
+              class="font-display text-[10px] md:text-[11px] font-semibold tracking-[0.18em] text-[var(--ink)]"
+            >
+              W7
+            </span>
+          </span>
+        </span>
+
+        <div class="leading-tight">
+          <div class="text-base md:text-lg font-semibold tracking-tight">
+            7WW7
+          </div>
+          <div class="hidden sm:block text-xs text-[var(--muted)]">
+            7 For The World, The World For 7
+          </div>
+        </div>
       </a>
 
-      <nav class="hidden md:flex items-center gap-6 text-sm">
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-8 text-base">
         {
           nav.map((i) => (
             <a
-              class="text-[var(--muted)] hover:text-[var(--ink)] transition"
+              class="text-[var(--muted)] hover:text-[var(--ink)] transition relative after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[var(--brand2)] after:transition-all hover:after:w-full"
               href={i.href}
             >
               {i.label}
@@ -33,12 +85,118 @@ const nav = [
         }
       </nav>
 
-      <a
-        href="/contact"
-        class="rounded-full bg-[var(--ink)] px-4 py-2 text-sm font-medium text-white hover:opacity-90 transition"
-      >
-        Become a Founding Partner
-      </a>
+      <!-- Right side -->
+      <div class="flex items-center gap-2">
+        <!-- Desktop CTA -->
+        <a
+          href="/contact"
+          class="hidden md:inline-flex rounded-full bg-[var(--ink)] px-5 py-2.5 text-base font-medium text-white hover:opacity-90 transition"
+        >
+          Become a Founding Partner
+        </a>
+
+        <!-- Mobile menu button -->
+        <button
+          id="menuBtn"
+          class="md:hidden inline-flex items-center justify-center rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-semibold hover:bg-black/[0.03] transition"
+          aria-label="Open menu"
+          type="button"
+        >
+          Menu
+          <svg
+            class="ml-2 h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M4 7h16M4 12h16M4 17h16"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
+
+  <!-- Mobile menu sheet -->
+  <div id="mobileMenu" class="fixed inset-0 z-[60] hidden">
+    <!-- overlay -->
+    <div id="menuOverlay" class="absolute inset-0 bg-black/40"></div>
+
+    <!-- panel -->
+    <div
+      class="absolute right-0 top-0 h-full w-[86%] max-w-sm bg-[var(--bg)] shadow-2xl"
+    >
+      <div
+        class="flex items-center justify-between border-b border-black/5 px-5 py-4"
+      >
+        <div class="text-base font-semibold">Menu</div>
+        <button
+          id="menuClose"
+          class="rounded-full border border-black/10 bg-white px-3 py-2 text-sm font-semibold hover:bg-black/[0.03] transition"
+          aria-label="Close menu"
+          type="button"
+        >
+          Close
+        </button>
+      </div>
+
+      <div class="px-5 py-5">
+        <nav class="grid gap-3 text-lg">
+          {
+            nav.map((i) => (
+              <a
+                class="rounded-2xl border border-black/5 bg-white px-4 py-3 font-semibold text-[var(--ink)] hover:bg-black/[0.03] transition"
+                href={i.href}
+              >
+                {i.label}
+              </a>
+            ))
+          }
+        </nav>
+
+        <a
+          href="/contact"
+          class="mt-6 inline-flex w-full justify-center rounded-2xl bg-[var(--ink)] px-5 py-3 text-base font-semibold text-white hover:opacity-90 transition"
+        >
+          Become a Founding Partner
+        </a>
+
+        <div class="mt-6 text-sm text-[var(--muted)]">
+          Institutional partnerships • Programs • Research • Media
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    const btn = document.getElementById("menuBtn");
+    const menu = document.getElementById("mobileMenu");
+    const closeBtn = document.getElementById("menuClose");
+    const overlay = document.getElementById("menuOverlay");
+
+    const openMenu = () => {
+      menu.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    };
+
+    const closeMenu = () => {
+      menu.classList.add("hidden");
+      document.body.style.overflow = "";
+    };
+
+    btn?.addEventListener("click", openMenu);
+    closeBtn?.addEventListener("click", closeMenu);
+    overlay?.addEventListener("click", closeMenu);
+
+    menu
+      ?.querySelectorAll("a")
+      .forEach((a) => a.addEventListener("click", closeMenu));
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+  </script>
 </header>

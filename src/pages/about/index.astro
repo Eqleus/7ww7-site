@@ -1,15 +1,15 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
 ---
 
 <BaseLayout title="About — 7WW7">
   <section class="py-12">
-    <h1 class="font-display text-4xl">About 7WW7</h1>
-    <p class="mt-4 max-w-3xl text-lg text-[var(--muted)]">
-      7WW7 is designed as a neutral coordination architecture: seven continental
-      foundations aligned through shared metrics, shared cadence, and shared
-      trust-building infrastructure.
-    </p>
+    <SectionHeader
+      kicker="About"
+      title="A continental peace engine built for trust"
+      description="7WW7 is designed as a neutral coordination architecture: seven continental foundations aligned through shared cadence, shared metrics, and shared delivery."
+    />
 
     <div class="mt-10 grid gap-4 md:grid-cols-3">
       {

@@ -1,0 +1,33 @@
+---
+const {
+  kicker = "",
+  title = "",
+  description = "",
+  align = "left", // "left" | "center"
+} = Astro.props;
+
+const alignWrap =
+  align === "center" ? "text-center items-center" : "text-left items-start";
+---
+
+<div class={`flex flex-col ${alignWrap}`}>
+  {
+    kicker && (
+      <div class="text-xs font-semibold tracking-[0.18em] uppercase text-[var(--brand)]">
+        {kicker}
+      </div>
+    )
+  }
+
+  <h1 class="mt-3 font-display text-4xl md:text-5xl leading-tight">
+    {title}
+  </h1>
+
+  <div class="mt-3 h-1 w-16 rounded-full bg-[var(--brand2)]"></div>
+
+  {
+    description && (
+      <p class="mt-4 max-w-3xl text-lg text-[var(--muted)]">{description}</p>
+    )
+  }
+</div>
